@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Stars from "./components/Stars";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -15,10 +16,23 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "dark";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    document.body.className = theme;
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
   return (
-    <div className="app">
-      <Stars />
-      <Header />
+    <div className={`app ${theme}`}>
+      {theme === "dark" && <Stars />}
+      <Header theme={theme} toggleTheme={toggleTheme} />
       <ScrollProgress />
       <main>
         <Hero />

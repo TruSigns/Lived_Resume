@@ -1472,3 +1472,335 @@ nav button:hover::after {
     align-items: center;
   }
 }
+
+/* ===== Theme toggle ===== */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+
+.theme-icon {
+  font-size: 0.9rem;
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+
+.theme-icon.active {
+  opacity: 1;
+}
+
+.theme-toggle-track {
+  width: 42px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle-track.light {
+  background: linear-gradient(135deg, #ffd166, #ff9a3c);
+  border-color: rgba(255, 154, 60, 0.4);
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #e8e8ec;
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.5);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.theme-toggle-track.light .theme-toggle-thumb {
+  transform: translateX(20px);
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 210, 100, 0.7);
+}
+
+/* ===== Light theme overrides (sunny) ===== */
+body.light {
+  background: #fdf9f3;
+}
+
+.app.light {
+  background: #fdf9f3;
+  color: #2a2a35;
+}
+
+.app.light::before,
+.app.light::after {
+  opacity: 0.05;
+}
+
+.app.light .header {
+  background: rgba(253, 249, 243, 0.9);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.app.light nav button {
+  color: #5a5a68;
+}
+
+.app.light nav button:hover {
+  color: #2a2a35;
+}
+
+.app.light .hero-badge {
+  background: rgba(255, 165, 0, 0.08);
+  border-color: rgba(255, 165, 0, 0.3);
+  color: #b8650a;
+}
+
+.app.light .hero-badge-dot {
+  background: #ffb703;
+  box-shadow: 0 0 6px #ffb703;
+}
+
+.app.light .hero h1 {
+  background: linear-gradient(135deg, #2a2a35, #b8650a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app.light .hero h2 {
+  color: #6a6a78;
+}
+
+.app.light .hero p,
+.app.light .section p,
+.app.light .about-text p {
+  color: #5a5a68;
+}
+
+.app.light .section h2,
+.app.light .highlights-heading,
+.app.light .closing-cta h2 {
+  color: #2a2a35 !important;
+}
+
+.app.light .section-eyebrow {
+  color: #b8650a;
+}
+
+.app.light .section h2::after {
+  background: linear-gradient(135deg, #ffb703, #fb5607);
+}
+
+/* Cards — force solid backgrounds regardless of order */
+.app.light .stat-card,
+.app.light .highlight-card,
+.app.light .skill-pill,
+.app.light .experience-item,
+.app.light .about-facts,
+.app.light .browser-frame,
+.app.light .project-card {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.app.light .browser-frame-header {
+  background: #f7f3ec;
+}
+
+.app.light .browser-url-bar {
+  color: #8a8a95;
+}
+
+/* Code window & terminal stay dark intentionally (developer aesthetic) */
+.app.light .code-window,
+.app.light .terminal-panel {
+  background: #14141c;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.app.light .about-fact-value {
+  color: #b8650a;
+}
+
+.app.light .about-fact-label,
+.app.light .experience-dates,
+.app.light .why-item p,
+.app.light .highlight-card p,
+.app.light .stat-label,
+.app.light .skill-level-text {
+  color: #6a6a78;
+}
+
+.app.light .skill-name,
+.app.light .experience-header h3,
+.app.light .project-card h3,
+.app.light .highlight-card h3,
+.app.light .why-item h3 {
+  color: #2a2a35 !important;
+}
+
+.app.light .stat-number {
+  background: linear-gradient(135deg, #ffb703, #fb5607);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app.light .highlight-icon-box {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 183, 3, 0.15),
+    rgba(251, 86, 7, 0.15)
+  );
+  border-color: rgba(255, 183, 3, 0.35);
+}
+
+.app.light .highlight-link {
+  color: #2a2a35;
+}
+
+.app.light .highlight-link:hover {
+  color: #b8650a;
+}
+
+.app.light .skill-pill.maxed {
+  border-color: rgba(255, 183, 3, 0.5) !important;
+  box-shadow: 0 0 16px rgba(255, 183, 3, 0.12);
+}
+
+.app.light .maxed-star {
+  color: #b8650a;
+}
+
+.app.light .skill-segment.filled {
+  background: linear-gradient(135deg, #ffb703, #fb5607);
+  box-shadow: none;
+}
+
+.app.light .skill-segment.filled.maxed {
+  background: linear-gradient(135deg, #ffd60a, #fb5607);
+  box-shadow: none;
+}
+
+.app.light .experience-company {
+  color: #b8650a;
+}
+
+.app.light .timeline-dot {
+  background: linear-gradient(135deg, #ffb703, #fb5607);
+  box-shadow: 0 0 10px rgba(251, 86, 7, 0.4);
+}
+
+.app.light .timeline-line {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 183, 3, 0.4),
+    rgba(251, 86, 7, 0.1)
+  );
+}
+
+.app.light .why-check {
+  background: linear-gradient(135deg, #ffb703, #fb5607);
+  box-shadow: 0 0 10px rgba(251, 86, 7, 0.3);
+}
+
+.app.light .project-lang,
+.app.light .project-links a {
+  color: #b8650a;
+}
+
+.app.light .project-links a:hover {
+  color: #fb5607;
+}
+
+/* Buttons — fix Get In Touch visibility */
+.app.light .btn-primary {
+  background: linear-gradient(135deg, #ffb703, #fb5607);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(251, 86, 7, 0.25);
+}
+
+.app.light .btn-primary:hover {
+  box-shadow: 0 6px 22px rgba(251, 86, 7, 0.4);
+}
+
+.app.light .btn-secondary {
+  background: #ffffff;
+  color: #2a2a35 !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+}
+
+.app.light .btn-secondary:hover {
+  background: #f7f3ec;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.app.light .contact-links a {
+  color: #2a2a35;
+  border-color: rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+
+.app.light .contact-links a:hover {
+  border-color: rgba(255, 183, 3, 0.6);
+  color: #b8650a;
+}
+
+.app.light .terminal-prompt {
+  color: #ffd60a;
+}
+
+.app.light .terminal-line,
+.app.light .terminal-output {
+  color: #d8d8e0;
+}
+
+.app.light .scroll-dot {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.app.light .scroll-dot.active {
+  background: linear-gradient(135deg, #ffb703, #fb5607);
+  box-shadow: 0 0 8px rgba(251, 86, 7, 0.4);
+}
+
+.app.light .scroll-dot-label {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #2a2a35;
+}
+
+.app.light .footer {
+  color: #8a8a95;
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+.app.light #about::before,
+.app.light #skills::before,
+.app.light #experience::before,
+.app.light #projects::before,
+.app.light #contact::before {
+  opacity: 0.35;
+}
+
+.app.light .closing-cta {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 183, 3, 0.06),
+    rgba(251, 86, 7, 0.06)
+  );
+}
+
+.app.light .closing-cta::before {
+  background: radial-gradient(circle, rgba(255, 183, 3, 0.15), transparent 70%);
+}

@@ -1,4 +1,7 @@
-function Header() {
+import ScrambleText from "./ScrambleText";
+import ThemeToggle from "./ThemeToggle";
+
+function Header({ theme, toggleTheme }) {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -6,7 +9,9 @@ function Header() {
   return (
     <header className="header">
       <div className="header-inner">
-        <span className="logo">Maurice Ruffin</span>
+        <span className="logo">
+          <ScrambleText text="Maurice Ruffin" speed={40} />
+        </span>
         <nav>
           <button onClick={() => scrollTo("about")}>About</button>
           <button onClick={() => scrollTo("skills")}>Skills</button>
@@ -14,6 +19,7 @@ function Header() {
           <button onClick={() => scrollTo("projects")}>Projects</button>
           <button onClick={() => scrollTo("contact")}>Contact</button>
         </nav>
+        <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
       </div>
     </header>
   );
