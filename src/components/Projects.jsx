@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ScrambleText from "./ScrambleText";
 
 const GITHUB_USERNAME = "TruSigns";
 
@@ -17,9 +18,9 @@ function Projects() {
       })
       .then((data) => {
         const filtered = data
-          .filter((repo) => !repo.fork) // hide forked repos
+          .filter((repo) => !repo.fork)
           .sort((a, b) => b.stargazers_count - a.stargazers_count)
-          .slice(0, 6); // show top 6
+          .slice(0, 6);
         setRepos(filtered);
         setLoading(false);
       })
@@ -31,36 +32,53 @@ function Projects() {
 
   return (
     <section id="projects" className="section">
-      <h2>Projects</h2>
+      <span className="section-eyebrow">Portfolio</span>
+      <h2>
+        <ScrambleText text="Projects" speed={50} />
+      </h2>
 
-      {loading && <p>Loading projects...</p>}
-      {error && <p>Couldn't load projects right now.</p>}
+      <div className="browser-frame">
+        <div className="browser-frame-header">
+          <span className="code-dot code-dot-red"></span>
+          <span className="code-dot code-dot-yellow"></span>
+          <span className="code-dot code-dot-green"></span>
+          <div className="browser-url-bar">github.com/{GITHUB_USERNAME}</div>
+        </div>
+        <div className="browser-frame-body">
+          {loading && <p>Loading projects...</p>}
+          {error && <p>Couldn't load projects right now.</p>}
 
-      <div className="projects-grid">
-        {repos.map((repo) => (
-          <div key={repo.id} className="project-card">
-            <h3>{repo.name}</h3>
-            <p>{repo.description || "No description provided."}</p>
-            <div className="project-meta">
-              {repo.language && (
-                <span className="project-lang">{repo.language}</span>
-              )}
-              {repo.stargazers_count > 0 && (
-                <span className="project-stars">★ {repo.stargazers_count}</span>
-              )}
-            </div>
-            <div className="project-links">
-              {repo.homepage && (
-                <a href={repo.homepage} target="_blank" rel="noreferrer">
-                  Live Site
-                </a>
-              )}
-              <a href={repo.html_url} target="_blank" rel="noreferrer">
-                Code
-              </a>
-            </div>
+          <div className="projects-grid">
+            {repos.map((repo) => (
+              <div key={repo.id} className="project-card">
+                <h3>
+                  <ScrambleText text={repo.name} speed={40} />
+                </h3>
+                <p>{repo.description || "No description provided."}</p>
+                <div className="project-meta">
+                  {repo.language && (
+                    <span className="project-lang">{repo.language}</span>
+                  )}
+                  {repo.stargazers_count > 0 && (
+                    <span className="project-stars">
+                      ★ {repo.stargazers_count}
+                    </span>
+                  )}
+                </div>
+                <div className="project-links">
+                  {repo.homepage && (
+                    <a href={repo.homepage} target="_blank" rel="noreferrer">
+                      Live Site
+                    </a>
+                  )}
+                  <a href={repo.html_url} target="_blank" rel="noreferrer">
+                    Code
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

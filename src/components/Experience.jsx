@@ -30,28 +30,36 @@ const experience = [
 function Experience() {
   return (
     <section id="experience" className="section">
+      <span className="section-eyebrow">Career</span>
       <h2>
         <ScrambleText text="Experience" speed={50} />
       </h2>
-      <div className="experience-list">
+      <div className="timeline">
         {experience.map((job, i) => (
-          <div
-            key={i}
-            className="experience-item shine"
-            style={{ "--shine-delay": `${i * 0.8}s` }}
-          >
-            <div className="experience-header">
-              <h3>
-                <ScrambleText text={job.title} speed={40} />
-              </h3>
-              <span className="experience-dates">{job.dates}</span>
+          <div key={i} className="timeline-item">
+            <div className="timeline-marker">
+              <span className="timeline-dot"></span>
+              {i < experience.length - 1 && (
+                <span className="timeline-line"></span>
+              )}
             </div>
-            <p className="experience-company">{job.company}</p>
-            <ul>
-              {job.points.map((point, j) => (
-                <li key={j}>{point}</li>
-              ))}
-            </ul>
+            <div
+              className="experience-item shine"
+              style={{ "--shine-delay": `${i * 0.8}s` }}
+            >
+              <div className="experience-header">
+                <h3>
+                  <ScrambleText text={job.title} speed={40} />
+                </h3>
+                <span className="experience-dates">{job.dates}</span>
+              </div>
+              <p className="experience-company">{job.company}</p>
+              <ul>
+                {job.points.map((point, j) => (
+                  <li key={j}>{point}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>

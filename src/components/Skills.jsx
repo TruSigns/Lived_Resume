@@ -18,6 +18,7 @@ const skills = [
 function Skills() {
   return (
     <section id="skills" className="section">
+      <span className="section-eyebrow">Toolbox</span>
       <h2>
         <ScrambleText text="Skills" speed={50} />
       </h2>
